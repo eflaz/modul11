@@ -33,7 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       if (event.target.classList.contains('add-card')) {
-        self.addCard(new Card(prompt("Enter the name of the card")));
+        var cardName = prompt("Enter the name of the card");
+        if (cardName == '') {
+          cardName = 'New card';
+        }
+        if (cardName != null) {
+          self.addCard(new Card(cardName));
+        }
       }
     });
   }
@@ -89,8 +95,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector('#board .create-column').addEventListener('click', function() {
       var name = prompt('Enter a column name');
-      var column = new Column(name);
-      board.addColumn(column);
+      if (name == '') {
+        name = 'New column';
+      }
+      if (name != null) {
+        var column = new Column(name);
+        board.addColumn(column);
+      }
   });
 
   // CREATING COLUMNS
